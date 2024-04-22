@@ -1,0 +1,107 @@
+{{#if data}}
+<form class="edit-form" method="POST" action="/features">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td>{{data.id}}</td>
+            <input type="hidden" name="id" value="{{data.id}}" />
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td><input type="text" name="type" value="{{data.type}}" /></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="{{data.name}}" /></td>
+        </tr>
+        <tr>
+            <td>Geo Type:</td>
+            <td><input type="text" name="geo_type" value="{{data.geo_type}}" /></td>
+        </tr>
+        <tr>
+            <td>Latitude:</td>
+            <td><input type="text" name="latitude" value="{{data.latitude}}" /></td>
+        </tr>
+        <tr>
+            <td>Longitude:</td>
+            <td><input type="text" name="longitude" value="{{data.longitude}}" /></td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td><input type="text" name="category" value="{{data.category}}" /></td>
+        </tr>
+        <tr>
+            <td>SubCategory:</td>
+            <td><input type="text" name="subCategory" value="{{data.subCategory}}" /></td>
+        </tr>
+        <tr>
+            <td>Icon:</td>
+            <td><input type="text" name="icon" value="{{data.icon}}" />
+                {{#if data.icon}}
+                <img src="{{data.icon}}" width="18" height="28" />
+                {{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Width</td>
+            <td>{{data.width}}</td>
+            <input type="hidden" name="width" value="{{data.width}}"/>            
+        </tr>
+        <tr>
+            <td>Height</td>
+            <td>{{data.height}}</td>
+            <input type="hidden" name="height" value="{{data.height}}"/>            
+        </tr>
+        <tr>
+            <td>Website:</td>
+            <td><input type="text" name="website" value="{{data.website}}" />
+            {{#if data.website}}<a href="{{data.website}}" target="_blank">Open Link</a>{{/if}}</td>
+        </tr>
+        <tr>
+            <td>Popup Content:</td>
+            <td><textarea rows="5" cols="250" name="popupContent">{{data.popupContent}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Featured Image:</td>
+            <td>
+            <input type="text" name="featuredImage" value="{{data.featuredImage}}" />
+            {{#if data.featuredImage}}<a href="{{data.featuredImage}}" target="_blank"><img src="{{data.featuredImage}}" width="320" height="320" /></a>{{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Detail Image:</td>
+            <td>
+            <input type="text" name="detailImage" value="{{data.detailImage}}" />
+            {{#if data.detailImage}}<a href="{{data.detailImage}}" target="_blank"><img src="{{data.detailImage}}" width="360" height="200" /></a>{{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Zoom Level:</td>
+            <td><input type="text" name="zoomLevel" value="{{data.zoomLevel}}"/></td>
+        </tr>
+        <tr>
+            <td>Opening Hours:</td>
+            <td><textarea rows="5" cols="250" name="openingHours">{{data.openingHours}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Visible:</td>
+            <td><input type="checkbox" name="visible" {{isChecked data.visible}} /></td>
+        </tr>
+        <tr>
+            <td>Exclude:</td>
+            <td><input type="checkbox" name="exclude" {{isChecked data.exclude}} />* if Exclude true then exclude (removed) this from the JSON file.</td>
+        </tr>
+        <tr>
+            <td>Entry Date:</td>
+            <td>{{data.entryDate}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Update">
+            </td>            
+        </tr>
+    </table>
+    <input type="hidden" name="redirect" value="/features/edit/{{data.id}}/success"/>
+</form>
+{{/if}}

@@ -1,0 +1,60 @@
+{{#if data}}
+<form class="edit-form" method="POST" action="/events">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td>{{data.id}}</td>
+            <input type="hidden" name="id" value="{{data.id}}" />
+        </tr>        
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="{{data.name}}" /></td>
+        </tr>
+        <tr>
+            <td>Location ID:</td>
+            <td><input type="text" name="location_id" value="{{data.location_id}}" /></td>
+        </tr>        
+        <tr>
+            <td>Featured Image:</td>
+            <td>
+            <input type="text" name="featuredImage" value="{{data.featuredImage}}" />
+            {{#if data.featuredImage}}<a href="{{data.featuredImage}}" target="_blank"><img src="{{data.featuredImage}}" width="320" height="320" /></a>{{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Detail Image:</td>
+            <td>
+            <input type="text" name="detailImage" value="{{data.detailImage}}" />
+            {{#if data.detailImage}}<a href="{{data.detailImage}}" target="_blank"><img src="{{data.detailImage}}" width="360" height="200" /></a>{{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Listing Duration:</td>
+            <td><input type="text" name="listingDuration" value="{{data.listingDuration}}"/></td>
+        </tr>
+        <tr>
+            <td>Opening Hours:</td>
+            <td><textarea rows="5" cols="250" name="openingHours">{{data.openingHours}}</textarea></td>
+        </tr>
+         <tr>
+            <td>Event Description:</td>
+            <td><textarea rows="5" cols="250" name="eventDescription">{{data.eventDescription}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Active:</td>
+            <td><input type="checkbox" name="active" {{isChecked data.active}} /></td>
+        </tr>
+         <tr>
+            <td>Extract:</td>
+            <td><input type="checkbox" name="extract" {{isChecked data.extract}} /></td>
+        </tr>        
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Update">
+            </td>            
+        </tr>
+    </table>
+    <input type="hidden" name="redirect" value="/events/edit/{{data.id}}/success"/>
+</form>
+{{/if}}

@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  server:
+    image: ubuntu/apache2:latest
+    build:
+      context: .
+    restart: 'no'
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/projects
+    networks:
+      - wayfinder-helper  
+  db:
+    image: mysql:8.0.29
+    volumes:
+       - ./mysql_data:/var/lib/mysql
+       - ./sql:/home
+    ports:
+      - "3083:3306"
+    restart: 'no'
+    networks:
+      - wayfinder-helper
+    environment:
+      MYSQL_DATABASE: gbb_wayfinder
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: R5SZ4Wq8VCgGjh7a
+      MYSQL_ROOT_PASSWORD: ezuKtYhRNrF7BctK
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: 'no'
+    ports:
+    - "8086:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: ezuKtYhRNrF7BctK
+    networks:
+      - wayfinder-helper
+networks:
+  wayfinder-helper:

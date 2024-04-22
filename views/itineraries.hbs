@@ -1,0 +1,19 @@
+{{#if results}}
+<p>Size: {{results.length}}</p>
+<table class="items-table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Active</th>
+        <th>Operation</th>
+    </tr>
+    {{#each results}}
+    <tr class="item-list">
+        <td class="center">{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td class="center"><span>{{isActiveORVisibleIcon this.active}}</span></td>
+        <td class="center"><a href="/itineraries/edit/{{this.id}}">Edit</a></td>
+    </tr>
+    {{/each}}
+</table>
+{{/if}}

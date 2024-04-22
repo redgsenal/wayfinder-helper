@@ -1,0 +1,23 @@
+{{#if results}}
+<p>Size: {{results.length}}</p>
+<table class="items-table">
+    <tr>
+        <th>ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>        
+        <th>Advisory Description</th>
+        <th>Active</th>
+        <th>Operation</th>
+    </tr>
+    {{#each results}}
+    <tr class="item-list">
+        <td class="center">{{this.id}}</td>
+        <td class="center">{{this.startDate}}</td>
+        <td class="center">{{this.endDate}}</td>
+        <td><div>{{{this.advisoryDescription}}}</div></td>
+        <td class="center"><span>{{isActiveORVisibleIcon this.active}}</span></td>
+        <td class="center"><a href="/advisory/edit/{{this.id}}">Edit</a></td>
+    </tr>
+    {{/each}}
+</table>
+{{/if}}

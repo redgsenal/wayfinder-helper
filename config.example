@@ -1,0 +1,9 @@
+let config = {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'gbb_wayfinder',
+    connectionLimit: 10
+};
+console.log("-> | file: config.js | line 9 | config", config);
+module.exports = config;

@@ -1,0 +1,53 @@
+{{#if data}}
+<form class="edit-form" method="POST" action="/itineraries">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td>{{data.id}}</td>
+            <input type="hidden" name="id" value="{{data.id}}" />
+        </tr>        
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="{{data.name}}" /></td>
+        </tr>
+        <tr>
+            <td>Number Of Attractions::</td>
+            <td><input type="text" name="numberOfAttractions" value="{{data.numberOfAttractions}}" /></td>
+        </tr>
+        <tr>
+            <td>Attractions:</td>
+            <td><input type="text" name="attractions" value="{{data.attractions}}" /></td>
+        </tr>        
+        <tr>
+            <td>Image:</td>
+            <td>
+            <input type="text" name="image" value="{{data.image}}" />
+            {{#if data.image}}<a href="{{data.image}}" target="_blank"><img src="{{data.image}}" width="320" height="320" /></a>{{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Duration:</td>
+            <td><textarea rows="5" cols="250" name="duration">{{data.duration}}</textarea></td>
+        </tr>        
+        <tr>
+            <td>Duration Code:</td>
+            <td><input type="text" name="durationCode" value="{{data.durationCode}}"/></td>
+        </tr>
+        <tr>
+            <td>Opening Hours:</td>
+            <td><textarea rows="5" cols="250" name="openingHours">{{data.openingHours}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Active:</td>
+            <td><input type="checkbox" name="active" {{isChecked data.active}} /></td>
+        </tr>       
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Update">
+            </td>            
+        </tr>
+    </table>
+    <input type="hidden" name="redirect" value="/itineraries/edit/{{data.id}}/success"/>
+</form>
+{{/if}}

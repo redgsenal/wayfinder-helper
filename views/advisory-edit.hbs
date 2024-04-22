@@ -1,0 +1,59 @@
+{{#if data}}
+<form class="edit-form" method="POST" action="/advisory">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td>{{data.id}}</td>
+            <input type="hidden" name="id" value="{{data.id}}"/>
+        </tr>       
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="{{data.name}}" /></td>
+        </tr>
+        <tr>
+            <td>Location ID:</td>
+            <td><input type="text" name="locations" value="{{data.locations}}" /></td>
+        </tr>
+        <tr>
+            <td>Icon:</td>
+            <td>
+            <input type="text" name="icon" value="{{data.icon}}" />
+            {{#if data.icon}}<a href="{{data.icon}}" target="_blank">
+                <img src="{{data.icon}}" width="{{data.width}}" height="{{data.height}}" /></a>
+            {{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td>Width:</td>
+            <td><input type="text" name="width" value="{{data.width}}" /></td>
+        </tr>
+        <tr>
+            <td>Height:</td>
+            <td><input type="text" name="height" value="{{data.height}}" /></td>
+        </tr>
+        <tr>
+            <td>Advisory Description:</td>
+            <td><textarea rows="5" cols="250" name="advisoryDescription">{{data.advisoryDescription}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td><input type="text" name="startDate" value="{{data.startDate}}" /></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><input type="text" name="endDate" value="{{data.endDate}}" /></td>
+        </tr>
+        <tr>
+            <td>Active:</td>
+            <td><input type="checkbox" name="active" {{isChecked data.active}} /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Update">
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="redirect" value="/advisory/edit/{{data.id}}/success" />
+</form>
+{{/if}}
